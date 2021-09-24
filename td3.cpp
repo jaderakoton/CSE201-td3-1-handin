@@ -54,12 +54,13 @@ double* remove_from_array(double* array,
                           int &total_elements,
                           int &array_size) {
   // IMPLEMENT YOUR FUNCTION HERE
-    double* new_array = shrink_array(array,total_elements, total_elements-1);
-    array_size = array_size -1;
+    array = shrink_array(array,total_elements, total_elements-1);
+    total_elements--;
     if(abs(array_size-total_elements)>=5){
-        array_size = array_size - 1;
+        array = shrink_array(array,array_size, array_size-5);
+        array_size -= 5;
     }
-    return new_array;
+    return array;
 }
 
 bool simulate_projectile(const double magnitude, const double angle,
