@@ -120,12 +120,12 @@ void sort(double *global_telementary, int &global_telementary_current_size){
                 double t = global_telementary[j];
                 double x = global_telementary[j+1];
                 double y = global_telementary[j+2];
-                global_telementary[j] = global_telementary[j+3];
+                global_telementary[j]=global_telementary[j+3];
                 global_telementary[j+1]=global_telementary[j+4];
                 global_telementary[j+2]=global_telementary[j+5];
-                global_telementary[j+3] = t;
-                global_telementary[j+4] = x;
-                global_telementary[j+5] = y;
+                global_telementary[j+3]=t;
+                global_telementary[j+4]=x;
+                global_telementary[j+5]=y;
             }
         }
     }
@@ -139,8 +139,9 @@ void merge_telemetry(double **telemetries,
                      int &global_telemetry_max_size) {
   // IMPLEMENT YOUR FUNCTION HERE
     for(int i=0;i<tot_telemetries;i++){
-        for(int j=0; j< *(telemetries_sizes + i);j++){
+        for(int j=0; j< *telemetries_sizes;j++){
             global_telemetry=append_to_array(*(*(telemetries + i)+j),global_telemetry, global_telemetry_current_size, global_telemetry_max_size);
+            *telemetries_sizes = *telemetries_sizes + i;
         }
     }
     sort(global_telemetry, global_telemetry_current_size);
